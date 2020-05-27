@@ -6,6 +6,8 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import de.telekom.sea.mystuff.frontend.android.api.ApiFactory;
+import de.telekom.sea.mystuff.frontend.android.api.ItemApi;
+import de.telekom.sea.mystuff.frontend.android.repo.ItemRepo;
 import lombok.Getter;
 import timber.log.Timber;
 
@@ -14,21 +16,27 @@ import timber.log.Timber;
  * directly.
  * This makes it easier to test the viewmodels, because less objects have to be mocked.
  */
+
 public class MyStuffContext {
 
     @Getter
     private ApiFactory apiFactory;
     private MyStuffApplication myStuffApp;
 
+    @Getter
+    private ItemRepo itemRepo;
+
+
     public MyStuffContext init(MyStuffApplication app) {
         this.myStuffApp = app;
         this.apiFactory = new ApiFactory();
+        this.itemRepo = new ItemRepo(this.apiFactory.createApi(ItemApi.class));
         return this;
     }
 
 
     public String getString(int resId) {
-        return myStuffApp .getString(resId);
+        return myStuffApp.getString(resId);
     }
 
     public void runOnUiThread(Runnable r) {

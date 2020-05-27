@@ -2,11 +2,13 @@ package de.telekom.sea.mystuff.frontend.android.model;
 
 import java.sql.Date;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class Item {
 
 	private Long id;
