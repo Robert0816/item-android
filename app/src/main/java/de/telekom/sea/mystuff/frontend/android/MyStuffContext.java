@@ -19,42 +19,40 @@ import timber.log.Timber;
 
 public class MyStuffContext {
 
+    private MyStuffApplication app;
+
     @Getter
     private ApiFactory apiFactory;
-    private MyStuffApplication myStuffApp;
+
 
     @Getter
     private ItemRepo itemRepo;
 
 
-    public MyStuffContext init(MyStuffApplication app) {
-        this.myStuffApp = app;
+    public MyStuffContext init(MyStuffApplication myStuffApplication) {
+        this.app = myStuffApplication;
         this.apiFactory = new ApiFactory();
         this.itemRepo = new ItemRepo(this.apiFactory.createApi(ItemApi.class));
         return this;
     }
 
 
-    public String getString(int resId) {
-        return myStuffApp.getString(resId);
+    public String getString(int resourceId) {
+        return app.getString(resourceId);
     }
 
-    public void runOnUiThread(Runnable r) {
-        Handler h = new Handler(Looper.getMainLooper());
-        h.post(r);
-    }
 
     public void sendBroadcast(Intent intent) {
-        myStuffApp.sendBroadcast(intent);
-    }
-
-    public void sendInfoMessage(String message) {
-        Runnable r = () -> Toast.makeText(MyStuffContext.this.myStuffApp, message, Toast.LENGTH_LONG).show();
-        runOnUiThread(r);
+        app.sendBroadcast(intent);
     }
 
     public void sendInfoMessage(int resId) {
-        sendInfoMessage(getString(resId));
+        Toast.makeText(this.app.getApplicationContext(),getString(resId), Toast.LENGTH_LONG).show();
+
+    }
+
+    public void sendInfoMessage(String msg){
+        Toast.makeText(this.app.getApplicationContext(),msg,Toast.LENGTH_LONG).show();
     }
 
     public void sendErrorMessage(int resId, String technicalErrorMessage) {

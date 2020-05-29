@@ -27,8 +27,6 @@ public class MyStuffApplication extends Application {
         super.onTerminate();
         instance = null;
     }
-
-
 }
 
 

@@ -9,7 +9,7 @@ import de.telekom.sea.mystuff.frontend.android.model.Item;
 
 public class ItemListViewModel extends MyStuffViewModel {
 
-    public LiveData<ApiResponse<List<Item>>>loadItems(){
+    public LiveData<ApiResponse<List<Item>>>getItems(){
         return this.getMyStuffContext().getItemRepo().getAll();
 
     }
