@@ -1,4 +1,4 @@
-package de.telekom.sea.mystuff.frontend.android.util;
+package de.telekom.sea.mystuff.frontend.android.ui;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
