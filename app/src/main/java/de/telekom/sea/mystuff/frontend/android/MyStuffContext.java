@@ -15,6 +15,8 @@ import timber.log.Timber;
  * Provides all component-like objects (e.g. singletons) without exposing the Application
  * directly.
  * This makes it easier to test the viewmodels, because less objects have to be mocked.
+
+ Zentrale Klasse um auf ApiFactory und Repositories
  */
 
 public class MyStuffContext {

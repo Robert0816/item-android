@@ -7,6 +7,9 @@ import java.util.List;
 import de.telekom.sea.mystuff.frontend.android.model.Item;
 import retrofit2.http.GET;
 
+
+// Zugriff auf die Rest Schnittstelle
+
 public interface ItemApi {
     @GET("api/v1/items")
     LiveData<ApiResponse<List<Item>>> getAll();

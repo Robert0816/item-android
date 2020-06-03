@@ -14,7 +14,10 @@ import de.telekom.sea.mystuff.frontend.android.databinding.MyStuffItemBinding;
 import de.telekom.sea.mystuff.frontend.android.model.Item;
 import lombok.Getter;
 
+
+// Anzeige der Daten bzw.  Layout für die einzelnen Zeilen zu erstellen
 public class ItemListRecyclerViewAdapter extends RecyclerView.Adapter<ItemListRecyclerViewAdapter.ViewHolder> {
+
 
     @Getter
     private List<Item> list;
@@ -33,9 +36,7 @@ public class ItemListRecyclerViewAdapter extends RecyclerView.Adapter<ItemListRe
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyStuffItemBinding listItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.my_stuff_item, parent, false);
-
         return new ViewHolder(listItemBinding);
-
     }
 
     @Override
@@ -56,7 +57,5 @@ public class ItemListRecyclerViewAdapter extends RecyclerView.Adapter<ItemListRe
             super(binding.getRoot());
             this.binding = binding;
         }
-
     }
-
 }
